@@ -11,17 +11,17 @@ const AppLayout = () => {
   const { user } = useAuth();
 
   return (
-    <div className='min-h-screen bg-gray-50 flex flex-col gap-4'>
+    <div className='min-h-screen bg-gray-50'>
       <Header />
 
-      <div className='grid grid-cols-5 gap-1'>
+      <div className='app__content grid grid-cols-5 gap-1'>
         <Sidebar
           isOpen={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
           userRoles={user?.roles}
         />
 
-        <main className='h-full p-6 col-span-4'>
+        <main className='h-full p-6 col-span-4 overflow-y-auto'>
           <Outlet />
         </main>
       </div>

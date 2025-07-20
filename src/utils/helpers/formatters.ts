@@ -5,6 +5,6 @@ export function titlecase(str: string): string {
     .join(' ');
 }
 
-export function decimal(str: string): string {
+export function decimal(str: string | number): string {
   return (+str).toFixed(2);
 }

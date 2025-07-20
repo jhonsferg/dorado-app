@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 
 import { useSales } from '@/hooks/useSales';
 import { parseDate } from '@/utils/helpers/dates';
-import { titlecase } from '@/utils/helpers/formatters';
+import { decimal, titlecase } from '@/utils/helpers/formatters';
 import { useAuth } from '@/hooks/useAuth';
 import { ROUTES } from '@/utils/constants/routes';
 
@@ -73,15 +73,17 @@ const SalesList = () => {
               </div>
               <div className='flex flex-row gap-2'>
                 <span className='font-bold'>IGV:</span>
-                <span className='text-gray-700'>S/. {sale.igv}</span>
+                <span className='text-gray-700'>S/. {decimal(sale.igv)}</span>
               </div>
               <div className='flex flex-row gap-2'>
                 <span className='font-bold'>Sub total:</span>
-                <span className='text-gray-700'>S/. {sale.subtotal}</span>
+                <span className='text-gray-700'>
+                  S/. {decimal(sale.subtotal)}
+                </span>
               </div>
               <div className='flex flex-row gap-2'>
                 <span className='font-bold'>Total:</span>
-                <span className='text-gray-700'>S/. {sale.total}</span>
+                <span className='text-gray-700'>S/. {decimal(sale.total)}</span>
               </div>
             </div>
 

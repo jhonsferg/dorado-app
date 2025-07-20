@@ -26,7 +26,6 @@ const Header = () => {
 
   const userMenuRef = useRef<any>(null);
 
-  // Cerrar menús al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
@@ -46,18 +45,14 @@ const Header = () => {
   const handleSearch = (e: any) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // Implementar lógica de búsqueda global
       console.log('Buscando:', searchQuery);
-      // Navegar a página de resultados o filtrar contenido actual
     }
   };
 
   return (
-    <header className='bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-4 py-3 sticky top-0 z-40'>
+    <header className='app__header bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-4 py-3 sticky top-0 z-40'>
       <div className='flex items-center justify-between'>
-        {/* Lado izquierdo */}
         <div className='flex items-center space-x-4'>
-          {/* Logo y título */}
           <Link to={ROUTES.DASHBOARD} className='flex items-center space-x-2'>
             <div className='text-2xl'>🍗</div>
             <div>
@@ -71,7 +66,6 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Barra de búsqueda central */}
         <div className='hidden md:flex flex-1 max-w-md mx-8'>
           <form onSubmit={handleSearch} className='w-full'>
             <div className='relative'>
@@ -87,9 +81,7 @@ const Header = () => {
           </form>
         </div>
 
-        {/* Lado derecho */}
         <div className='flex items-center space-x-3'>
-          {/* Contador del carrito */}
           {cartItemCount > 0 && (
             <Link to={ROUTES.SALE_NEW} className='relative'>
               <Button variant='outline' size='sm'>
@@ -104,7 +96,6 @@ const Header = () => {
             </Link>
           )}
 
-          {/* Menú de usuario */}
           <div className='relative' ref={userMenuRef}>
             <Button
               variant='outline'
@@ -113,14 +104,12 @@ const Header = () => {
               className='flex items-center space-x-2'
             >
               <div className='flex items-center space-x-2'>
-                {/* Avatar o icono de usuario */}
                 <div className='h-6 w-6 bg-red-600 rounded-full flex items-center justify-center'>
                   <span className='text-xs font-medium text-white'>
                     {user?.fullName?.charAt(0)?.toUpperCase() || 'U'}
                   </span>
                 </div>
 
-                {/* Nombre de usuario (oculto en móvil) */}
                 <div className='hidden sm:block text-left'>
                   <p className='text-sm font-medium text-gray-900 dark:text-white'>
                     {user?.fullName || 'Usuario'}
@@ -134,10 +123,8 @@ const Header = () => {
               </div>
             </Button>
 
-            {/* Dropdown de usuario */}
             {showUserMenu && (
               <div className='absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1 z-50'>
-                {/* Información del usuario */}
                 <div className='px-4 py-3 border-b border-gray-200 dark:border-gray-700'>
                   <p className='text-sm font-medium text-gray-900 dark:text-white'>
                     {user?.fullName}
@@ -154,7 +141,6 @@ const Header = () => {
                   </div>
                 </div>
 
-                {/* Opciones del menú */}
                 <div className='py-1'>
                   <Link
                     to={ROUTES.SETTINGS_PROFILE}
@@ -175,10 +161,8 @@ const Header = () => {
                   </Link>
                 </div>
 
-                {/* Separador */}
                 <div className='border-t border-gray-200 dark:border-gray-700'></div>
 
-                {/* Cerrar sesión */}
                 <div className='py-1'>
                   <button
                     onClick={handleLogout}

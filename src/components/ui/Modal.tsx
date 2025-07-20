@@ -19,7 +19,7 @@ const Modal = ({
 
   return (
     <div
-      className='fixed inset-0 flex items-center justify-center'
+      className='fixed inset-0 flex items-center justify-center z-10'
       style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
     >
       <div className='bg-white rounded-lg shadow-lg p-6 max-w-md w-full relative'>
