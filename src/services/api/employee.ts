@@ -1,17 +1,24 @@
+import api from '@/services/api/index.ts';
+
 export const employeeService = {
-  getAll(): Promise<any[]> {
-    return Promise.resolve([]);
+  getAll: async (): Promise<any[]> => {
+    const response = await api.get('/employees');
+    return response.data;
   },
-  getById(id: number): Promise<any> {
-    return Promise.resolve(id as any);
+  getById: async (employeeId: number): Promise<any> => {
+    const response = await api.get(`/employees/${employeeId}`);
+    return response.data;
   },
-  create(data: any): Promise<any> {
-    return Promise.resolve(data);
+  create: async (employee: any): Promise<any> => {
+    const response = await api.post(`/employees`, employee);
+    return response.data;
   },
-  update(id: number, data: any): Promise<any> {
-    return Promise.resolve({id, data});
+  update: async (id: number, employee: any): Promise<any> => {
+    const response = await api.put(`/employees/${id}`, employee);
+    return response.data;
   },
-  delete(id: number): Promise<any> {
-    return Promise.resolve(id as any);
-  }
+  delete: async (id: number): Promise<any> => {
+    const response = await api.delete(`/employee/${id}`);
+    return response.data;
+  },
 };
